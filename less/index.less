@@ -1,0 +1,208 @@
+@import url(jquery.fullPage.less);
+
+
+// |animations
+@-webkit-keyframes slide-bit
+{
+    0%   {background-position: 0 5px;}
+    25%  {background-position: 0 0px;}
+    50%  {background-position: 0 5px;}
+    75%  {background-position: 0 10px;}
+    100% {background-position: 0 5px;}
+}
+/* Standard syntax */
+@keyframes slide-bit
+{
+    0%   {background-position: 0 5px;}
+    25%  {background-position: 0 0px;}
+    50%  {background-position: 0 5px;}
+    75%  {background-position: 0 10px;}
+    100% {background-position: 0 5px;}
+}
+body{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.bg-fast-load{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+  z-index: -99999;
+  overflow: hidden;
+}
+// audio box
+.audio-source-box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -999;
+  height: 1px;
+  width: 1px;
+  visibility: hidden;
+}
+// audio box
+// |animations
+.slide-tip{
+    padding: 5px 0;
+    box-sizing: content-box;
+    // border: 1px solid white;
+    // border-radius: 4px;
+    background-color: rgba(92,47,14,0.1);
+
+    -webkit-animation-name: slide-bit;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 4s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-play-state: running;
+    animation-name: slide-bit;
+    animation-duration: 1s;
+    animation-delay: 4s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+
+
+    position: absolute;
+    left: 50%;
+    margin-left: -0.5em;
+    width: 1em;
+    height: 1em;
+
+    &.down{
+      background: url(../icon/slide-down.png?20140613-4) no-repeat 0 5px;
+      background-size: 100% auto;
+      bottom: 0;
+      z-index: 10;
+    }
+    &.up{
+      background: url(../icon/slide-up.png?20140613-4) no-repeat 0 5px;
+      background-size: 100% auto;
+      top: 0;
+      z-index: 10;
+    }
+  }
+
+
+html, body, {
+  background-color: #f1f1f1;
+}
+.section{
+  background-color: #f1f1f1;
+  background-image: url(../icon/loading.gif?20140613-4);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  // -webkit-background-size: 100% 100%;
+  // background-size: 100% 100%;
+  img{
+    width: 100%;
+    height: 100%;
+    // display: none;
+  }
+}
+
+@jpgWidth: 1080;
+@jpgHeight: 1920;
+.page-desc{
+  position: absolute;
+  z-index: -1;
+  text-indent: -999999px;
+}
+
+.page10{
+  position: relative;
+}
+.page10-baomign-box{
+  position: absolute;
+  top: 100% * 1042 / @jpgHeight;
+  left: 100% * 289 / @jpgWidth;
+  width: 100% * 520 / @jpgWidth;
+  height: 100% * 132 / @jpgHeight;
+  a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display:block;
+    width: 100%;
+    height: 100%;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.audio-button-box{
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  width: 10%;
+  img{
+    display: none;
+    width: 100%;
+    // height: 100%;
+  }
+  img.play{
+    display: block;
+  }
+  &.stop{
+    img.stop{
+      display: block;
+    }
+    img.play{
+      display: none;
+    }
+  }
+}
+
+@animationDuration: 3s;
+.audio-button-box{
+  img.play{
+    -webkit-animation-name: round;
+    -webkit-animation-duration: @animationDuration;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-iteration-count: infinite;
+    // -webkit-animation-direction: alternate; //是否应该轮流反向播放动画。
+    -webkit-animation-play-state: running;
+
+    animation-name: round;
+    animation-duration: @animationDuration;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    // animation-direction: alternate; //是否应该轮流反向播放动画。
+    animation-play-state: running;
+  }
+}
+.transform(@deg: 0deg){
+  -ms-transform: rotate(@deg);
+  -webkit-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+.keyframes(@from: 0deg, @to: 360deg){
+  from{
+    .transform(@from);
+  }
+  to{
+    .transform(@to);
+  }
+}
+@-webkit-keyframes round{
+  .keyframes();
+}
+@keyframes round{
+  .keyframes();
+}
+
+
+a[href^="http://tongji.baidu.com"]{
+  position:absolute;
+  display: block;
+  z-index:-999;
+  left:-100000px;
+  top:-111111px;
+}
+
