@@ -1,0 +1,367 @@
+/**
+ * fullPage 1.6.7
+ * https://github.com/alvarotrigo/fullPage.js
+ * MIT licensed
+ *
+ * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
+ */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+#superContainer {
+  height: 100%;
+  position: relative;
+  /* Touch detection for Windows 8 */
+  -ms-touch-action: none;
+}
+.section {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.slide {
+  float: left;
+}
+.slide,
+.slidesContainer {
+  height: 100%;
+  display: block;
+}
+.slides {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.section.table,
+.slide.table {
+  display: table;
+  width: 100%;
+}
+.tableCell {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+}
+.slidesContainer {
+  float: left;
+  position: relative;
+}
+.controlArrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  margin-top: -38px;
+}
+.controlArrow.prev {
+  left: 15px;
+  width: 0;
+  border-width: 38.5px 34px 38.5px 0;
+  border-color: transparent #fff transparent transparent;
+}
+.controlArrow.next {
+  right: 15px;
+  border-width: 38.5px 0 38.5px 34px;
+  border-color: transparent transparent transparent #fff;
+}
+.scrollable {
+  overflow: scroll;
+}
+.easing {
+  -webkit-transition: all 0.7s ease-out;
+  -moz-transition: all 0.7s ease-out;
+  -o-transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
+}
+#fullPage-nav {
+  position: fixed;
+  z-index: 100;
+  margin-top: -32px;
+  top: 50%;
+  opacity: 1;
+}
+#fullPage-nav.right {
+  right: 17px;
+}
+#fullPage-nav.left {
+  left: 17px;
+}
+.fullPage-slidesNav {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  opacity: 1;
+}
+.fullPage-slidesNav.bottom {
+  bottom: 17px;
+}
+.fullPage-slidesNav.top {
+  top: 17px;
+}
+#fullPage-nav ul,
+.fullPage-slidesNav ul {
+  margin: 0;
+  padding: 0;
+}
+#fullPage-nav li,
+.fullPage-slidesNav li {
+  display: block;
+  width: 14px;
+  height: 13px;
+  margin: 7px;
+  position: relative;
+}
+.fullPage-slidesNav li {
+  display: inline-block;
+}
+#fullPage-nav li a,
+.fullPage-slidesNav li a {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+}
+#fullPage-nav li .active span,
+.fullPage-slidesNav .active span {
+  /*background: #333;*/
+  background: #eee;
+}
+#fullPage-nav span,
+.fullPage-slidesNav span {
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  /*border: 1px solid #000;*/
+  border: 1px solid #888;
+  background: rgba(0, 0, 0, 0);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 1;
+}
+.fullPage-tooltip {
+  position: absolute;
+  color: #fff;
+  font-size: 14px;
+  font-family: arial, helvetica, sans-serif;
+  top: -2px;
+}
+.fullPage-tooltip.right {
+  right: 20px;
+}
+.fullPage-tooltip.left {
+  left: 20px;
+}
+@-webkit-keyframes slide-bit {
+  0% {
+    background-position: 0 5px;
+  }
+  25% {
+    background-position: 0 0px;
+  }
+  50% {
+    background-position: 0 5px;
+  }
+  75% {
+    background-position: 0 10px;
+  }
+  100% {
+    background-position: 0 5px;
+  }
+}
+/* Standard syntax */
+@keyframes slide-bit {
+  0% {
+    background-position: 0 5px;
+  }
+  25% {
+    background-position: 0 0px;
+  }
+  50% {
+    background-position: 0 5px;
+  }
+  75% {
+    background-position: 0 10px;
+  }
+  100% {
+    background-position: 0 5px;
+  }
+}
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.bg-fast-load {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 0;
+  left: 0;
+  z-index: -99999;
+  overflow: hidden;
+}
+.audio-source-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -999;
+  height: 1px;
+  width: 1px;
+  visibility: hidden;
+}
+.slide-tip {
+  padding: 5px 0;
+  box-sizing: content-box;
+  background-color: rgba(92, 47, 14, 0.1);
+  -webkit-animation-name: slide-bit;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-delay: 4s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+  animation-name: slide-bit;
+  animation-duration: 1s;
+  animation-delay: 4s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  position: absolute;
+  left: 50%;
+  margin-left: -0.5em;
+  width: 1em;
+  height: 1em;
+}
+.slide-tip.down {
+  background: url(../icon/slide-down.png?20140613-4) no-repeat 0 5px;
+  background-size: 100% auto;
+  bottom: 0;
+  z-index: 10;
+}
+.slide-tip.up {
+  background: url(../icon/slide-up.png?20140613-4) no-repeat 0 5px;
+  background-size: 100% auto;
+  top: 0;
+  z-index: 10;
+}
+html,
+body {
+  background-color: #f1f1f1;
+}
+.section {
+  background-color: #f1f1f1;
+  background-image: url(../icon/loading.gif?20140613-4);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.section img {
+  width: 100%;
+  height: 100%;
+}
+.page-desc {
+  position: absolute;
+  z-index: -1;
+  text-indent: -999999px;
+}
+.page10 {
+  position: relative;
+}
+.page10-baomign-box {
+  position: absolute;
+  top: 54.270833333333336%;
+  left: 26.75925925925926%;
+  width: 48.148148148148145%;
+  height: 6.875%;
+}
+.page10-baomign-box a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.page10-baomign-box a img {
+  width: 100%;
+  height: 100%;
+}
+.audio-button-box {
+  position: fixed;
+  bottom: 3px;
+  right: 3px;
+  width: 10%;
+}
+.audio-button-box img {
+  display: none;
+  width: 100%;
+}
+.audio-button-box img.play {
+  display: block;
+}
+.audio-button-box.stop img.stop {
+  display: block;
+}
+.audio-button-box.stop img.play {
+  display: none;
+}
+.audio-button-box img.play {
+  -webkit-animation-name: round;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-play-state: running;
+  animation-name: round;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+@-webkit-keyframes round {
+  from {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes round {
+  from {
+    -ms-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+a[href^="http://tongji.baidu.com"] {
+  position: absolute;
+  display: block;
+  z-index: -999;
+  left: -100000px;
+  top: -111111px;
+}
