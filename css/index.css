@@ -303,8 +303,8 @@ body {
 }
 .audio-button-box {
   position: fixed;
-  bottom: 1em;
-  right: 1em;
+  bottom: 3px;
+  right: 3px;
   width: 10%;
 }
 .audio-button-box img {

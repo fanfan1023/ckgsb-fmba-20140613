@@ -4,7 +4,12 @@
 
 长江商学院金融MBA论坛•广州 互联网金融的创业机会与实践
 
+
+
 注：只测试过 webkit/blink 内核、以及微信浏览器。其他地段浏览器不进行兼容，另外，不兼容横屏。设计图比例为 1080/1920。因此最佳查看分辨率为一般手机竖屏查看。
+
+临时效果查看地址：
+[ingbaobeigroup.github.io/ckgsb-fmba-20140613](http://ingbaobeigroup.github.io/ckgsb-fmba-20140613) 
 
 
 ##本地使用
